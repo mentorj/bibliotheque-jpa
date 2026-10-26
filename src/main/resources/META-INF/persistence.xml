@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
+
+  <persistence-unit name="bibliotheque" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>dev.bibliotheque.domaine.Auteur</class>
+    <class>dev.bibliotheque.domaine.Livre</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+    <properties>
+      <!-- URL, utilisateur et mot de passe sont fournis par le programme (voir Options) -->
+      <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+      <!-- crée les tables auteur et livre si elles n'existent pas -->
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+      <!-- insertion groupée : regroupe les INSERT par lots de 50 et par table -->
+      <property name="hibernate.jdbc.batch_size" value="50"/>
+      <property name="hibernate.order_inserts" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
