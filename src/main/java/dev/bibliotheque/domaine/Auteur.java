@@ -1,9 +1,6 @@
 package dev.bibliotheque.domaine;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
 
 import java.time.LocalDate;
@@ -21,6 +18,17 @@ import java.util.UUID;
 @Entity
 @Immutable
 @Table(name = "auteur")
+@NamedQueries({
+        @NamedQuery(name="findByLargeNames",query="from Auteur where LENGTH(nom)>10"),
+        @NamedQuery(name="findByNameAndFirstName",query="from Auteur where nom= :nom and prenom=:prenom"),
+        @NamedQuery(
+                name = "findProlificAuthors",
+                query = "SELECT a FROM Auteur a " +
+                        "JOIN Livre l ON l.auteur = a " +
+                        "GROUP BY a " +
+                        "HAVING COUNT(l) > :numBooks")
+                }
+)
 public class Auteur {
 
     @Id

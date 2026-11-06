@@ -22,4 +22,19 @@
       <property name="hibernate.order_inserts" value="true"/>
     </properties>
   </persistence-unit>
+
+  <persistence-unit name="bibliotheque-spy" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>dev.bibliotheque.domaine.Auteur</class>
+    <class>dev.bibliotheque.domaine.Livre</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+    <properties>
+      <!-- URL, utilisateur et mot de passe sont fournis par le programme (voir Options) -->
+      <property name="jakarta.persistence.jdbc.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:p6spy:postgresql://localhost:5432/bibliotheque" />
+      <property name="jakarta.persistence.jdbc.user" value="bibliotheque" />
+      <property name="jakarta.persistence.jdbc.password" value="bibliotheque" />
+    </properties>
+  </persistence-unit>
 </persistence>

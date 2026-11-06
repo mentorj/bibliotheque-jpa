@@ -21,7 +21,7 @@ import java.util.stream.Stream;
  *
  * <p>Usage : {@code Main [nbAuteurs [livresParAuteur [auteursParLot]]]}
  */
-public final class Main {
+public final class PopulateDb {
 
     private record Resultat(int auteurs, int livres) {
         static final Resultat VIDE = new Resultat(0, 0);
@@ -31,7 +31,7 @@ public final class Main {
         }
     }
 
-    private Main() {
+    private PopulateDb() {
     }
 
     public static void main(String[] args) {
