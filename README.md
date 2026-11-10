@@ -42,3 +42,7 @@ src/main/java/dev/bibliotheque/
 ├── domaine/Auteur.java, Livre.java
 └── generation/DonneesAleatoires.java
 ```
+
+## Plus d'informations
+Une documentation  plus complete est disponible ici :
+[doc  demo](docs/demo.md)
